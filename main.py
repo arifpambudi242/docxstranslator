@@ -29,10 +29,7 @@ for ind, para in enumerate(paragraphs):
 			translated = trans.translate(inline[i].text, dest=targetbahasa).text
 			inline[i].text = translated
 	
-	try:
-		cmd("cls")
-	except:
-		cmd("clear")
+	cmd("clear")
 
 filename = filepath.split(".docx", 1)[0]
 document.save(f"{filename}-result-{targetbahasa}.docx")
