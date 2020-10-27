@@ -30,7 +30,7 @@ for ind, para in enumerate(paragraphs):
 			translated = trans.translate(v.text, dest=targetlang).text
 			v.text = translated
 	sleep(0.1)
-	cmd("clear")
+	cmd("clear") # change to cmd("cls") if your os is windows 
 
 filename = filepath.split(".docx", 1)[0]
 document.save(f"{filename}-{targetlang}.docx")
