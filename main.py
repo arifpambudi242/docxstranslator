@@ -12,7 +12,7 @@ import sys
 trans = Translator(service_urls=['translate.google.com', 'translate.google.co.kr'])
 
 
-filepath        = sys.argv[1] if len(sys.argv) >= 2 else input("Masukan Path File : ")
+filepath        = sys.argv[1] if len(sys.argv) >= 2 else input("Type Path of File : ")
 targetlang 		= sys.argv[2] if len(sys.argv) >= 3 else "id"
 document 		= Document(filepath)
 
@@ -27,8 +27,8 @@ for ind, para in enumerate(paragraphs):
 		inline = para.runs
 		for i, v in enumerate(inline):
 			# translate
-			translated = trans.translate(inline[i].text, dest=targetlang).text
-			inline[i].text = translated
+			translated = trans.translate(v.text, dest=targetlang).text
+			v.text = translated
 	sleep(0.1)
 	cmd("clear")
 
