@@ -29,11 +29,12 @@ for ind, para in enumerate(paragraphs):
 	if para.text:
 		inline = para.runs
 		for i, v in enumerate(inline):
-			# translate
-			translated = trans.translate(v.text, dest=targetlang).text
 			# splelling correction
-			corrected = spell(translated)
-			v.text = corrected
+			corrected = spell(v.text)
+			# translating
+			translated = trans.translate(corrected, dest=targetlang).text
+			# set paragraph text
+			v.text = translated
 	sleep(0.1)
 	cmd("clear") # change to cmd("cls") if your os is windows 
 
