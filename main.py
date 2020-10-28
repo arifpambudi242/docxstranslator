@@ -5,7 +5,7 @@ email	: arifpambudi242@gmail.com
 '''
 from docx import Document
 from os import system as cmd
-from time import sleep
+import time
 from googletrans import Translator
 import sys
 from autocorrect import Speller
@@ -24,7 +24,7 @@ lenparagraphs   = len(paragraphs)
 
 for ind, para in enumerate(paragraphs):
 	percentase 	= round((ind + 1) / lenparagraphs * 100, 2)
-	print(f"translatting.....{ind+1}/{lenparagraphs} - {percentase}%")
+	print(f"translatting.....{ind+1}/{lenparagraphs} - {percentase}% - {round((lenparagraphs - (ind + 1))/2)} s left")
 
 	if para.text:
 		inline = para.runs
@@ -35,8 +35,8 @@ for ind, para in enumerate(paragraphs):
 			translated = trans.translate(corrected, dest=targetlang).text
 			# set paragraph text
 			v.text = translated
-	sleep(0.1)
+	time.sleep(0.0001)
 	cmd("clear") # change to cmd("cls") if your os is windows 
 
 filename = filepath.split(".docx", 1)[0]
-document.save(f"{filename}-{targetlang}.docx")
+document.save(f"{filename}-{targetlang}-{round(time.time())}.docx")
