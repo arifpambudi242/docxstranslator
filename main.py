@@ -8,6 +8,9 @@ from os import system as cmd
 from time import sleep
 from googletrans import Translator
 import sys
+from autocorrect import Speller
+
+spell = Speller()
 
 trans = Translator(service_urls=['translate.google.com', 'translate.google.co.kr'])
 
@@ -28,7 +31,9 @@ for ind, para in enumerate(paragraphs):
 		for i, v in enumerate(inline):
 			# translate
 			translated = trans.translate(v.text, dest=targetlang).text
-			v.text = translated
+			# splelling correction
+			corrected = spell(translated)
+			v.text = corrected
 	sleep(0.1)
 	cmd("clear") # change to cmd("cls") if your os is windows 
 

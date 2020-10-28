@@ -1,3 +1,4 @@
+autocorrect==2.2.2
 certifi==2020.6.20
 chardet==3.0.4
 contextvars==2.4
@@ -11,7 +12,11 @@ httpx==0.13.3
 hyperframe==5.2.0
 idna==2.10
 immutables==0.14
+language-tool-python==2.4.6
 lxml==4.6.1
 python-docx==0.8.10
+requests==2.24.0
 rfc3986==1.4.0
 sniffio==1.2.0
+tqdm==4.50.2
+urllib3==1.25.11
