@@ -14,3 +14,6 @@ pip3 install -r requirements.txt
 ```python
 python3 main.py path_to_docx_file target_language
 ```
+
+
+<a href="paypal.me/payarifpambudi">Donate</a>
