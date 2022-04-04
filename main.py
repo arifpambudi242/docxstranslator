@@ -10,7 +10,7 @@ from googletrans import Translator
 import sys
 from autocorrect import Speller
 
-spell = Speller()
+spell = Speller(lang="en")
 
 trans = Translator()
 
