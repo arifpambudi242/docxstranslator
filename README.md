@@ -16,4 +16,4 @@ python3 main.py path_to_docx_file target_language
 ```
 
 
-<a href="https://paypal.me/payarifpambudi">Donate</a>
+<a style="background: red;border-radius: 5px;" href="https://paypal.me/payarifpambudi">Donate</a>
