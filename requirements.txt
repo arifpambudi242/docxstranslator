@@ -2,7 +2,7 @@ autocorrect==2.2.2
 certifi==2020.6.20
 chardet==3.0.4
 contextvars==2.4
-googletrans==3.0.0
+python-translator==1.0.3
 h11==0.9.0
 h2==3.2.0
 hpack==3.0.0

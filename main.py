@@ -3,15 +3,10 @@ author 	: Arif Pambudi
 email	: arifpambudi242@gmail.com
 
 '''
-'''
-author 	: Arif Pambudi
-email	: arifpambudi242@gmail.com
-
-'''
 from docx import Document
 from os import system as cmd
 import time
-from googletrans import Translator
+from python_translator import Translator
 from autocorrect import Speller
 import sys
 
@@ -21,6 +16,7 @@ spell = Speller(lang="en")
 
 filepath = sys.argv[1] if len(sys.argv) >= 2 else input("Type Path of File : ")
 targetlang = sys.argv[2] if len(sys.argv) >= 3 else "id"
+sourcelang = sys.argv[3] if len(sys.argv) >= 4 else "en"
 
 document = Document(filepath)
 
@@ -37,7 +33,7 @@ for ind, para in enumerate(paragraphs):
             for i, v in enumerate(inline):
                 corrected = spell.autocorrect_sentence(v.text)
                 # translating
-                translated = trans.translate(corrected, dest=targetlang).text
+                translated = trans.translate(corrected, targetlang, sourcelang).new_text
                 # set paragraph text
                 if translated:
                     v.text = translated
