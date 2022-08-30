@@ -5,18 +5,26 @@ email	: arifpambudi242@gmail.com
 '''
 from docx import Document
 from os import system as cmd
+from pdf2docx import Converter
+from docx2pdf import convert as convert_docx_to_pdf
 import time
 from python_translator import Translator
 from autocorrect import Speller
 import sys
 
-
 trans = Translator()
 spell = Speller(lang="en")
 
 filepath = sys.argv[1] if len(sys.argv) >= 2 else input("Type Path of File : ")
-targetlang = sys.argv[2] if len(sys.argv) >= 3 else "id"
-sourcelang = sys.argv[3] if len(sys.argv) >= 4 else "en"
+targetlang = sys.argv[2] if len(sys.argv) >= 3 else input("Type target languange : ")
+sourcelang = sys.argv[3] if len(sys.argv) >= 4 else input("Type source languange : ")
+# get file extension
+file_extension = filepath.split(".")[-1]
+if (file_extension == "pdf"):
+    conv = Converter(filepath)
+    conv.convert(filepath.split(".")[0] + ".docx")
+    conv.close()
+    filepath = filepath.split(".")[0] + ".docx"
 
 document = Document(filepath)
 
@@ -43,5 +51,10 @@ for ind, para in enumerate(paragraphs):
         continue
 
 filename = filepath.split(".docx", 1)[0]
-document.save(f"{filename}-{targetlang}-{round(time.time())}.docx")
-print(f"{filename}-{targetlang}-{round(time.time())}.docx has been generated")
+try:
+    document.save(f"{filename}-{targetlang}-{round(time.time())}.docx")
+    convert_docx_to_pdf(f"{filename}-{targetlang}-{round(time.time())}.docx", f"{filename}-{targetlang}-{round(time.time())}.pdf")
+    print(f"{filename}-{targetlang}-{round(time.time())}.docx has been generated")
+except:
+    print("error")
+    pass
