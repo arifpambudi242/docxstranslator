@@ -1,6 +1,6 @@
 # doctranslator
 
-doctranslator is a python script for translating docx file text
+doctranslator is a python script for translating pdf file text
 
 
 ### prerequisite
