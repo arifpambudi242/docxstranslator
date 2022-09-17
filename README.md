@@ -12,7 +12,7 @@ pip3 install -r requirements.txt
 ### usage
 
 ```python
-python3 main.py path_to_docx_file target_language
+python3 main.py path_to_pdf_file target_language source_language
 ```
 
 
