@@ -16,8 +16,8 @@ trans = Translator()
 spell = Speller(lang="en")
 
 filepath = sys.argv[1] if len(sys.argv) >= 2 else input("Type Path of File : ")
-targetlang = sys.argv[2] if len(sys.argv) >= 3 else input("Type target languange : ")
-sourcelang = sys.argv[3] if len(sys.argv) >= 4 else input("Type source languange : ")
+targetlang = sys.argv[2] if len(sys.argv) >= 3 else 'id'
+sourcelang = sys.argv[3] if len(sys.argv) >= 4 else 'en'
 # get file extension
 file_extension = filepath.split(".")[-1]
 if (file_extension == "pdf"):
@@ -52,9 +52,9 @@ for ind, para in enumerate(paragraphs):
 
 filename = filepath.split(".docx", 1)[0]
 try:
-    document.save(f"{filename}-{targetlang}-{round(time.time())}.docx")
-    convert_docx_to_pdf(f"{filename}-{targetlang}-{round(time.time())}.docx", f"{filename}-{targetlang}-{round(time.time())}.pdf")
+    docx_name = f"{filename}-{targetlang}-{time.strftime('%d.%m.%Y-%H.%M.%S')}.docx"
+    document.save(docx_name)
+    convert_docx_to_pdf(docx_name, f"{filename}-{targetlang}-{time.strftime('%d.%m.%Y-%H.%M.%S')}.pdf")
     print(f"{filename}-{targetlang}-{round(time.time())}.docx has been generated")
-except:
-    print("error")
-    pass
+except Exception as e:
+    raise e

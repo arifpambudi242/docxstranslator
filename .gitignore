@@ -2,3 +2,5 @@ env
 env/*
 *.docx
 *.ipynb
+*.pdf
+*.docx
